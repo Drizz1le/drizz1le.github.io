@@ -2,11 +2,42 @@
 	"products" : [
 		{
 			"name" : "144 Skinned Blackknight",
-			"price" : "79.99",
+			"price" : "179.99",
 			"options" : [
 				{ "OneOfAKind" : true }
 			],
+			"mainimage" : "/images/blackknight.png",
 			"image" : "/images/144blackknight.jpg",
+			"description" : "This account comes with full access to the Epicgames account and the email. After purchase you will recive the account info in email:password format once the purchase is verifed by the owner."
+		},
+		{
+			"name" : "Honor Guard",
+			"price" : "199.99",
+			"options" : [
+				{ "OneOfAKind" : true }
+			],
+			"mainimage" : "/images/honorguard.png",
+			"image" : "/images/37honorguard.png",
+			"description" : "This account comes with full access to the Epicgames account and the email. After purchase you will recive the account info in email:password format once the purchase is verifed by the owner."
+		},
+		{
+			"name" : "Rogue Spider Knight Code",
+			"price" : "149.99",
+			"options" : [
+				{ "OneOfAKind" : true }
+			],
+			"mainimage" : "/images/roguespiderknight.png",
+			"image" : "/images/roguespiderknightcode.png",
+			"description" : "This account comes with full access to the Epicgames account and the email. After purchase you will recive the account info in email:password format once the purchase is verifed by the owner."
+		},
+		{
+			"name" : "27,000 Vbucks Preloaded account",
+			"price" : "99.99",
+			"options" : [
+				{ "OneOfAKind" : true }
+			],
+			"mainimage" : "/images/vbucks.png",
+			"image" : "/images/lotsvbucks.png",
 			"description" : "This account comes with full access to the Epicgames account and the email. After purchase you will recive the account info in email:password format once the purchase is verifed by the owner."
 		}
 	]

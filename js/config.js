@@ -27,7 +27,9 @@ $(function() {
 
 	    // collection of arbitrary data you may want to store with the cart,
 	    // such as customer info
-	    data: {},
+	    data: {
+			email: "Your email"
+		},
 
 	    // set the cart langauge (may be used for checkout)
 	    language: "english-us",
