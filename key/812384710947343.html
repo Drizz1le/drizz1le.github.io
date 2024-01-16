@@ -3,17 +3,71 @@
 <head>
 <style>
   body {
-    background-color: rgb(0, 0, 0);
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
-  
-  text {
+
+  .circle-image {
+    width: 150px; /* Doubled the size */
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid rgba(255, 255, 255, 0.496); /* Added border */
+    margin-bottom: 20px;
+  }
+
+  .circle-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .overlay {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    padding: 20px;
+    border: 5px solid rgba(255, 255, 255, 0.496);
+    color: rgb(48, 48, 48);
+    font-family: 'YourNiceFont', sans-serif;
+    font-size: 24px;
+    font-weight: bold; /* Make the text bold */
+  }
+
+  .button {
+    background-color: #7289DA;
     color: white;
-    font-family: 'YourNiceFont', sans-serif; /* Replace 'YourNiceFont' with the desired font */
+    border: none;
+    padding: 10px 20px;
+    border: 3px solid rgba(138, 183, 221, 0.496);
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'YourNiceFont', sans-serif;
+    font-size: 18px;
+    text-decoration: none;
   }
 </style>
 </head>
 <body>
-  <text>Your key is: 57gd517e85eg39705c1g8c6a415512a0</text><br>
-  <text>This key will expire after the giveaway is done, and you will need to get another one!</text>
+  <div class="circle-image">
+    <img src="fishstick.jpg" alt="Fishstick Image">
+  </div>
+  <div class="overlay">
+    <p><strong>Your key is:</strong> 57gd517e85eg39705c1g8c6a415512a0</p>
+    
+  </div>
+  <br>
+  <a href="https://discord.gg/53HFyDWBgW" target="_blank" class="button">
+    <img src="discord.png" alt="Discord Icon" style="width: 20px; height: 20px; margin-right: 10px;">
+    Join Fishstick Server
+  </a>
 </body>
 </html>
