@@ -10,10 +10,11 @@
             margin: 0;
             padding: 0;
             background-color: #ffffff;
+            background-image: url("randobackground.jpg");
         }
         .tab {
             text-align: center;
-            background-color: rgba(204, 204, 204, 0.852);;
+            background-color: rgba(204, 204, 204, 0.304);;
             border: #000000;
             border-radius: 1px;
             padding: 20px;
@@ -21,11 +22,14 @@
         .tab button {
             background-color: transparent;
             border: none;
-            outline: none;
+            outline: #000000;
+            outline-width: thin;
             cursor: pointer;
+            color: aliceblue;
             padding: 10px 20px;
             transition: 0.3s;
-            font-size: 28px;
+            font-size: 34px;
+            font-weight: bolder;
             margin: 0 5px;
             position: relative;
         }
@@ -52,6 +56,41 @@
             padding: 20px;
             border-top: none;
         }
+        .product-container {
+            max-width: 80%; /* Adjust this value as needed */
+            margin: 0 auto; /* Center the container */
+        }
+        .product-button {
+            display: block;
+            width: 100%;
+            background-color: #d3d3d3b2;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            text-align: left;
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .product-button img {
+            width: 215px;
+            height: 215px;
+            float: left;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+        .product-header {
+            font-size: 30px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .product-description {
+            font-size: 20px;
+            line-height: 1.5;
+            height: 173px;
+        }
     </style>
 </head>
 <body>
@@ -67,8 +106,31 @@
 </div>
 
 <div id="Products" class="tabcontent">
-    <h3>Products</h3>
-    <p>Here are our products.</p>
+    <div class="product-container">
+        <a href="https://www.amazon.com/link-to-product-1" target="_blank" class="product-button">
+            <img src="case1.jpg" alt="Product 1">
+            <div class="product-content">
+                <div class="product-header">11" x 11" Wooden & Plexi glass box case</div>
+                <div class="product-description">
+                        <div>text about the pc case </div>
+                </div>
+            </div>
+        </a>
+        <a href="https://www.amazon.com/link-to-product-2" target="_blank" class="product-button">
+            <img src="case1.jpg" alt="Product 2">
+            <div class="product-content">
+                <div class="product-header">Product 2 Header</div>
+                <div class="product-description">
+                    <ul>
+                        <li>Bullet point 1</li>
+                        <li>Bullet point 2</li>
+                        <li>Bullet point 3</li>
+                    </ul>
+                </div>
+            </div>
+        </a>
+        <!-- Add more product buttons as needed -->
+    </div>
 </div>
 
 <script>
