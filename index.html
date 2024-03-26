@@ -57,12 +57,35 @@
             border-top: none;
         }
         .product-container {
-            max-width: 80%; /* Adjust this value as needed */
-            margin: 0 auto; /* Center the container */
+            display: flex;
+            justify-content: left;
+
         }
+
+        .product-info-box {
+            flex: 0 0 auto;
+            width: calc(20% - 20px); /* Adjust as needed */
+            background-color: #d3d3d3b2;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+            color: #ffffff;
+            margin-right: 75px;
+            margin-left: 35px;
+            margin-top: 30px;
+        }
+
+        .product-buttons {
+            flex: 0 0 auto;
+            width: 50%; /* Set width to 50% */
+            margin-left: 35px; /* Adjust margin as needed */
+        }
+
+
+
         .product-button {
             display: block;
-            width: 100%;
             background-color: #d3d3d3b2;
             border: none;
             outline: none;
@@ -73,7 +96,9 @@
             text-align: left;
             color: #ffffff;
             text-decoration: none;
+            margin-top: 30px;
         }
+
         .product-button img {
             width: 215px;
             height: 215px;
@@ -82,15 +107,17 @@
             border-radius: 10px;
         }
         .product-header {
-            font-size: 30px;
-            margin-bottom: 10px;
+            font-size: 40px;
+            margin-bottom: 15px;
             font-weight: bold;
         }
         .product-description {
             font-size: 20px;
             line-height: 1.5;
-            height: 173px;
+            height: 155px;
         }
+
+
     </style>
 </head>
 <body>
@@ -107,31 +134,39 @@
 
 <div id="Products" class="tabcontent">
     <div class="product-container">
-        <a href="https://www.amazon.com/link-to-product-1" target="_blank" class="product-button">
-            <img src="case1.jpg" alt="Product 1">
-            <div class="product-content">
-                <div class="product-header">11" x 11" Wooden & Plexi glass box case</div>
-                <div class="product-description">
-                        <div>text about the pc case </div>
-                </div>
+        <div class="product-info-box">
+            <div class="product-header">Special Offer</div>
+            <div class="product-description">
+                <p>Check out our limited time offers!</p>
             </div>
-        </a>
-        <a href="https://www.amazon.com/link-to-product-2" target="_blank" class="product-button">
-            <img src="case1.jpg" alt="Product 2">
-            <div class="product-content">
-                <div class="product-header">Product 2 Header</div>
-                <div class="product-description">
-                    <ul>
-                        <li>Bullet point 1</li>
-                        <li>Bullet point 2</li>
-                        <li>Bullet point 3</li>
-                    </ul>
+        </div>
+        <div class="product-buttons">
+            <a href="https://www.amazon.com/link-to-product-1" target="_blank" class="product-button">
+                <img src="case1.jpg" alt="Product 1">
+                <div class="product-content">
+                    <div class="product-header">Mini ITX PC Case - 300$</div>
+                    <div class="product-description">
+                        <p>Premium Clear Acrylic and Wood PC Case</p>
+                    </div>
                 </div>
-            </div>
-        </a>
-        <!-- Add more product buttons as needed -->
+            </a>
+            <a href="https://www.amazon.com/link-to-product-2" target="_blank" class="product-button">
+                <img src="case2.jpg" alt="Product 2">
+                <div class="product-content">
+                    <div class="product-header">Product 2 Header</div>
+                    <div class="product-description">
+                        <ul>
+                            <li>Some feature</li>
+                            <li>Another feature</li>
+                        </ul>
+                    </div>
+                </div>
+            </a>
+            <!-- Add more product buttons as needed -->
+        </div>
     </div>
 </div>
+
 
 <script>
     function openTab(evt, tabName) {
