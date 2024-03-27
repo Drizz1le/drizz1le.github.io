@@ -9,8 +9,11 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #ffffff;
+            background-color: #333333;
             background-image: url("randobackground.jpg");
+            background-repeat:no-repeat;
+            background-size:cover;
+
         }
         .tab {
             text-align: center;
@@ -25,7 +28,7 @@
             outline: #000000;
             outline-width: thin;
             cursor: pointer;
-            color: aliceblue;
+            color: rgb(231, 231, 231);
             padding: 10px 20px;
             transition: 0.3s;
             font-size: 34px;
@@ -57,14 +60,14 @@
             border-top: none;
         }
         .product-container {
-            display: flex;
+            display: flex; 
             justify-content: left;
 
         }
 
         .product-info-box {
             flex: 0 0 auto;
-            width: calc(20% - 20px); /* Adjust as needed */
+            width: calc(30% - 20px);
             background-color: #d3d3d3b2;
             border-radius: 20px;
             padding: 20px;
@@ -74,12 +77,13 @@
             margin-right: 75px;
             margin-left: 35px;
             margin-top: 30px;
+            height: 30%;
         }
 
         .product-buttons {
             flex: 0 0 auto;
-            width: 50%; /* Set width to 50% */
-            margin-left: 35px; /* Adjust margin as needed */
+            width: 50%;
+            margin-left: 35px;
         }
 
 
@@ -108,13 +112,16 @@
         }
         .product-header {
             font-size: 40px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             font-weight: bold;
+            color: #000000;
         }
         .product-description {
-            font-size: 20px;
-            line-height: 1.5;
+            font-size: 24px;
+            line-height: 2.0;
             height: 155px;
+            font-weight: 500;
+            color: #000000;
         }
 
 
@@ -123,8 +130,9 @@
 <body>
 
 <div class="tab">
-    <button class="tablinks" onclick="openTab(event, 'AboutUs')" id="defaultOpen">About Us</button>
+    <button class="tablinks" onclick="openTab(event, 'AboutUs')" id="defaultOpen">About</button>
     <button class="tablinks" onclick="openTab(event, 'Products')">Products</button>
+    <button class="tablinks" onclick="openTab(event, 'ContactUs')">Contact Us</button>
 </div>
 
 <div id="AboutUs" class="tabcontent">
@@ -132,43 +140,63 @@
     <p>This is some information about us.</p>
 </div>
 
+<div id="ContactUs" class="tabcontent">
+    <div class="product-buttons">
+        <a class="product-button">
+            <div class="product-content">
+                <div class="product-header">Any questions or concerns? Contact Us!</div>
+                <div class="product-description">
+                    <ul>
+                        <div>•  email@email.com</div>
+                    </ul>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
 <div id="Products" class="tabcontent">
     <div class="product-container">
         <div class="product-info-box">
-            <div class="product-header">Special Offer</div>
+            <div class="product-header">Case Inspector</div>
             <div class="product-description">
-                <p>Check out our limited time offers!</p>
+                <p>Select a case to get started!</p>
             </div>
         </div>
         <div class="product-buttons">
             <a href="https://www.amazon.com/link-to-product-1" target="_blank" class="product-button">
                 <img src="case1.jpg" alt="Product 1">
                 <div class="product-content">
-                    <div class="product-header">Mini ITX PC Case - 300$</div>
+                    <div class="product-header">Mini ITX PC Case - 89.99$</div>
                     <div class="product-description">
-                        <p>Premium Clear Acrylic and Wood PC Case</p>
+                        <ul>
+                            <div>•  Premium Clear Acrylic and Wood materials</div>
+                            <div>•  Beautiful airflow with 3 fan spots & open concept</div>
+                            <div>•  Custom wood engraving & acrylic LED images</div>
+                        </ul>
                     </div>
                 </div>
             </a>
             <a href="https://www.amazon.com/link-to-product-2" target="_blank" class="product-button">
                 <img src="case2.jpg" alt="Product 2">
                 <div class="product-content">
-                    <div class="product-header">Product 2 Header</div>
+                    <div class="product-header">Open Air PC Case - 59.99$</div>
                     <div class="product-description">
                         <ul>
-                            <li>Some feature</li>
-                            <li>Another feature</li>
+                            <div>•  Amazing airflow with open air concept</div>
+                            <div>•  Low cost for budget builds</div>
+                            <div>•  Custom wood engraving </div>
                         </ul>
                     </div>
                 </div>
             </a>
-            <!-- Add more product buttons as needed -->
         </div>
     </div>
 </div>
 
 
 <script>
+    // Nerd shit
     function openTab(evt, tabName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
@@ -181,11 +209,11 @@
         }
         document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
-        // Update URL hash without reloading the page
+        // Update URL hash without reloading the page. Pro gamer move
         history.pushState(null, null, '#' + tabName);
     }
 
-    // Get the hash from the URL and open corresponding tab
+    // Get the hash from the URL and open coresponding tab
     window.onload = function() {
         var hash = window.location.hash.substring(1);
         if (hash) {
