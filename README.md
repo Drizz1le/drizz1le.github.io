@@ -11,5 +11,5 @@ Website for custom wooden PC cases that showcases them &amp; then directs you to
   
 - Get dimentions & show what is compatiable with this case<br>
 
-~7 Hours in
+~10 Hours in
   
