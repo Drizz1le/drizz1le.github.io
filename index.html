@@ -13,7 +13,7 @@
             background-color: #333333;
             background-image: url("randobackground.jpg");
             background-repeat: no-repeat;
-            background-size: fill;
+            background-size: cover;
             overflow-x: hidden; /* Add this line to hide horizontal scrollbar */
         }
         .tab {
@@ -77,11 +77,25 @@
             border-radius: 20px;
             padding: 20px;
             margin-bottom: 20px;
-            text-align: left;
+            text-align: center;
             color: #ffffff;
             margin-right: 75px;
             margin-left: 35px;
             margin-top: 30px;
+        }
+
+        .review-box {
+            width: 17%;
+            height: 200px;
+            background-color: #2c2c2cb2; /*d3d3d3b2*/
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #ffffff;
+            margin-right: 0px;
+            margin-left: 35px;
+            margin-top: 75px;
         }
 
         .product-buttons {
@@ -208,8 +222,55 @@
             color: #ffffff;
         }
 
+        .span2{
+            display: block;
+            font-size: 56px;
+            font-weight: bolder;
+            margin-bottom: 10px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .info1 {
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        .info1 div {
+            margin: 0 40px;
+            
+            flex: 1;
+            max-width: 300px;
+            max-height: 105px;
+            font-size: 20px;
+            text-shadow: -1px -1px 0 #000,  
+                        1px -1px 0 #000,
+                        -1px  1px 0 #000,
+                        1px  1px 0 #000; /* Add text outline */
+        }
+
+        .info1 div span {
+            display: block;
+            font-size: 56px;
+            font-weight: bolder;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+
         .container h1{
             font-size: 56px;
+            color: #f9f9f9;
+            font-weight: bolder;
+            text-shadow: -1px -1px 0 #000,  
+                        1px -1px 0 #000,
+                        -1px  1px 0 #000,
+                        1px  1px 0 #000; /* Add text outline */
+        
+        }
+
+        .container h2{
+            font-size: 40px;
             color: #f9f9f9;
             font-weight: bolder;
             text-shadow: -1px -1px 0 #000,  
@@ -342,7 +403,7 @@
         }
 
         .tabcontent {
-            padding: 20px;
+            padding: 10px;
             margin-top: 100px;
             border-top: none;
             display: block;
@@ -387,7 +448,9 @@
             margin-right: 10px; /* Add some spacing between buttons */
         }
 
-
+        .div1{
+            text-align: center;
+        }
 
 
     </style>
@@ -417,10 +480,21 @@
                 <p>Customers</p>
             </div>
             <div>
-                <span>5.00</span>
+                <span>4.6 ★</span>
                 <p>Average Reviews</p>
             </div>
         </div>
+        <h2>Reviews</h2>
+        <div class="info1">
+            <div class="review-box"><span2>★ ★ ★ ★ ★</span2><div>Amazing case! Was able to customize with my logo, 10/10</div></div>
+            <div class="review-box"><span2>★ ★ ★ ★ ★</span2><div>Runs minecraft good</div></div>
+            <div class="review-box"><span2>★ ★ ★ ★</span2><div>Lol added my face to it </div></div>
+        </div>
+        <div class="info1">
+            <div class="review-box"><span2>★ ★ ★ ★ </span2><div>Can play fortnite with it but no minecraft</div></div>
+            <div class="review-box"><span2>★ ★ ★ ★ ★</span2><div>Wood kool</div></div>
+            <div class="review-box"><span2>★ ★ ★ ★ ★</span2><div>Small plexiglass cool 10/10</div></div>
+        </div>    
 
     </div>
 </div>
@@ -444,23 +518,22 @@
 <div id="Products" class="tabcontent">
     <div class="product-container">
         <div class="product-info-box">
-            <div class="product-header">Case Inspector</div>
+            <div class="product-header" id="caseTitle" >Mini ITX PC Case</div>
             <div class="product-description">
                 <div class="container-model">
-                        <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
-                        <model-viewer alt="PC Case Model" src="Astronaut.glb" ar environment-image="blue.hdr" shadow-intensity="1" camera-controls touch-action="pan-y"></model-viewer>
-                    </div>
-                    <a href="https://www.amazon.com/link-to-product-1" target="_blank" class="buy-button">
-                        <div class="buy-button-text">Buy on Amazon</div>
-                    </a>
-                    <a href="http://127.0.0.1:3000/case1" target="_blank" class="fullscreen-button">
-                        <div class="fullscreen-button-text">View in fullscreen</div>
-                    </a>
-                                      
+                    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+                    <model-viewer id="productModel" alt="PC Case Model" src="case1.glb" ar environment-image="blue.hdr" shadow-intensity="1" camera-controls touch-action="pan-y"></model-viewer>
                 </div>
+                <a id="amazonButton" href="https://www.amazon.com/link-to-product-1" target="_blank" class="buy-button" disabled>
+                    <div class="buy-button-text">Buy on Amazon</div>
+                </a>
+                <a href="http://127.0.0.1:3000/case1"  target="_blank" id="fullscreenButton" class="fullscreen-button" disabled>
+                    <div class="fullscreen-button-text">View in fullscreen</div>
+                </a>
+            </div>
         </div>
         <div class="product-buttons">
-            <a href="https://www.amazon.com/link-to-product-1" target="_blank" class="product-button">
+            <a class="product-button" onclick="loadProductInfo(1)">
                 <img src="case1.jpg" alt="Product 1">
                 <div class="product-content">
                     <div class="product-header">Mini ITX PC Case - 89.99$</div>
@@ -473,7 +546,7 @@
                     </div>
                 </div>
             </a>
-            <a href="https://www.amazon.com/link-to-product-2" target="_blank" class="product-button">
+            <a class="product-button" onclick="loadProductInfo(2)">
                 <img src="case2.jpg" alt="Product 2">
                 <div class="product-content">
                     <div class="product-header">Open Air PC Case - 59.99$</div>
@@ -492,6 +565,35 @@
 
 
 <script>
+
+const products = [
+        {
+            modelSrc: "case1.glb",
+            amazonLink: "https://www.amazon.com/link-to-product-1",
+            fullscreenLink: "http://127.0.0.1:3000/case1",
+            caseName: "Mini ITX PC Case"
+        },
+        {
+            modelSrc: "case2.glb",
+            amazonLink: "https://www.amazon.com/link-to-product-2",
+            fullscreenLink: "http://127.0.0.1:3000/case2",
+            caseName: "Open Air PC Case"
+        }
+    ];
+
+    // Function to load product information and update the website
+    function loadProductInfo(productId) {
+        const product = products[productId - 1]; // Array index is 0-based
+        const modelViewer = document.getElementById('productModel');
+        const amazonButton = document.getElementById('amazonButton');
+        const fullscreenButton = document.getElementById('fullscreenButton');
+        const caseTitle = document.getElementById('caseTitle');
+
+        modelViewer.setAttribute('src', product.modelSrc);
+        amazonButton.setAttribute('href', product.amazonLink);
+        fullscreenButton.setAttribute('href', product.fullscreenLink);
+        caseTitle.innerHTML = product.caseName;
+    }
     
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
