@@ -1,0 +1,129 @@
+.contact1-contact20 {
+  gap: var(--dl-space-space-threeunits);
+  width: 100%;
+  margin-top: 50px;
+  height: 110%;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  flex-direction: column;
+}
+.contact1-max-width {
+  gap: var(--dl-space-space-threeunits);
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.contact1-content {
+  gap: var(--dl-space-space-oneandhalfunits);
+  flex: 1;
+  width: auto;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  flex-shrink: 0;
+  flex-direction: column;
+}
+.contact1-contact-info {
+  gap: var(--dl-space-space-oneandhalfunits);
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+}
+.contact1-content1 {
+  gap: var(--dl-space-space-unit);
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+}
+.contact1-text {
+  color: #ffffff;
+  align-self: stretch;
+  text-align: center;
+}
+.contact1-text1 {
+  color: #ffffff;
+  font-size: 24px;
+  text-align: center;
+  line-height: 1.9;
+}
+.contact1-content2 {
+  gap: var(--dl-space-space-oneandhalfunits);
+  flex: 1;
+  width: auto;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  flex-direction: column;
+}
+.contact1-contact-info1 {
+  gap: var(--dl-space-space-oneandhalfunits);
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+}
+.contact1-content3 {
+  gap: var(--dl-space-space-unit);
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+}
+.contact1-text2 {
+  color: #ffffff;
+  align-self: stretch;
+  text-align: center;
+}
+.contact1-text3 {
+  color: #ffffff;
+  font-size: 24px;
+  text-align: center;
+  line-height: 1.9;
+}
+.contact1-content4 {
+  gap: var(--dl-space-space-oneandhalfunits);
+  flex: 1;
+  width: auto;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  flex-direction: column;
+}
+.contact1-contact-info2 {
+  gap: var(--dl-space-space-oneandhalfunits);
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+}
+.contact1-content5 {
+  gap: var(--dl-space-space-unit);
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+}
+.contact1-text4 {
+  color: #ffffff;
+  align-self: stretch;
+  text-align: center;
+}
+.contact1-text7 {
+  color: #ffffff;
+  font-size: 24px;
+  text-align: center;
+  line-height: 1.9;
+}
+.contact1-address {
+  color: #ffffff;
+  font-size: 24px;
+  text-align: center;
+}
+@media(max-width: 767px) {
+  .contact1-max-width {
+    flex-direction: column;
+  }
+}
