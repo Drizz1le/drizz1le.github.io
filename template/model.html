@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Model with Lines</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 4000px;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .text-container {
+            position: absolute;
+            width: 20%;
+            height: 80%;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .left {
+            left: 0;
+            top: 50%;
+            text-align: right;
+        }
+        .right {
+            right: 0;
+            top: 50%;
+            text-align: left;
+            height: 200%;
+        }
+        .model-container {
+            width: 60%;
+            height: 100vb;
+            position: relative;
+            top: 100%;
+        }
+        canvas {
+            display: block;
+            background-color: transparent;
+        }
+        .svgcss {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+    </style>
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.130.1/build/three.module.js",
+            "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.130.1/examples/jsm/"
+          }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="text-container left">
+            <p id="text1">Word 1</p>
+            <p id="text2">Word 2</p>
+            <p id="text3">Word 3</p>
+        </div>
+        <div class="model-container">
+            <canvas id="modelCanvas"></canvas>
+        </div>
+        <div class="text-container right">
+            <p id="text4">Word 4</p>
+            <p id="text5">Word 5</p>
+            <p id="text6">Word 6</p>
+        </div>
+        <svg class="svgcss" id="linesLayer"></svg>
+    </div>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+        import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+        
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('modelCanvas'), alpha: true });
+        renderer.setSize(window.innerWidth * 0.6, window.innerHeight * 0.8);
+        renderer.setClearColor(0x000000, 0); // Transparent background
+        camera.position.z = 5;
+        
+        // Adding lights
+        const ambientLight = new THREE.AmbientLight(0xffffff, 2); // Brighter ambient light
+        scene.add(ambientLight);
+        
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1); // White light
+        directionalLight.position.set(1, 1, 1).normalize();
+        scene.add(directionalLight);
+        
+        const controls = new OrbitControls(camera, renderer.domElement);
+        
+        const loader = new GLTFLoader();
+        let model;
+        loader.load('./models/case1.glb', function (gltf) {
+            model = gltf.scene;
+            scene.add(model);
+            addDotsToModel(); // Add dots to the model
+            updateLines(); // Initial lines update
+        });
+        
+        function addDotsToModel() {
+            const geometry = new THREE.SphereGeometry(0.1, 32, 32);
+            const material = new THREE.MeshBasicMaterial({ color: 0x0000ff });
+            const dotPositions = [ // By word number. text1 = the first entry and so on
+                new THREE.Vector3(5, 0, 0),
+                new THREE.Vector3(-1, 1, 0),
+                new THREE.Vector3(0, -1, 1),
+                new THREE.Vector3(1, 1, -1),
+                new THREE.Vector3(-1, -1, -1),
+                new THREE.Vector3(0, 0, 0)
+            ];
+    
+            dotPositions.forEach((position, index) => {
+                const dot = new THREE.Mesh(geometry, material);
+                dot.position.copy(position);
+                dot.userData = { id: `text${index + 1}` }; // Add id for reference
+                model.add(dot);
+            });
+        }
+        
+        function updateLines() {
+            if (!model) return; // Ensure model is loaded
+    
+            const svg = document.getElementById('linesLayer');
+            svg.innerHTML = ''; // Clear existing lines
+            
+            // Get the vertical offset of the modelCanvas relative to the top of the page
+            const modelCanvas = document.getElementById('modelCanvas');
+            const canvasRect = modelCanvas.getBoundingClientRect();
+            const canvasOffsetY = canvasRect.top + document.documentElement.scrollTop;
+
+            
+            // Filter text elements by IDs that exist in the dot userData
+            const validIds = ['text1', 'text2', 'text3', 'text4', 'text5', 'text6'];
+            const textElements = validIds.map(id => document.getElementById(id)).filter(el => el);
+            const textPositions = textElements.map(textElement => {
+                const rect = textElement.getBoundingClientRect();
+                return {
+                    id: textElement.id,
+                    x: rect.left + window.scrollX + rect.width / 2,
+                    y: rect.top + window.scrollY + rect.height / 2
+                };
+            });
+            
+            const widthHalf = window.innerWidth / 2;
+            const heightHalf = window.innerHeight / 2;
+            const modelDots = Array.from(model.children).filter(child => child.type === 'Mesh');
+            
+            modelDots.forEach(dot => {
+                const vector = dot.position.clone().project(camera);
+                const dot2D = {
+                    x: (vector.x * widthHalf) + widthHalf,
+                    y: -(vector.y * heightHalf) + heightHalf
+                };
+                
+                const textElement = textPositions.find(text => text.id === dot.userData.id);
+                if (textElement) {
+                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    line.setAttribute('x1', textElement.x);
+                    line.setAttribute('y1', textElement.y);
+                    line.setAttribute('x2', dot2D.x);
+                    line.setAttribute('y2', dot2D.y + canvasOffsetY); // Apply the inverted canvas offset
+                    line.setAttribute('stroke', 'red');
+                    line.setAttribute('stroke-width', '2');
+                    svg.appendChild(line);
+                }
+            });
+        }
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            updateLines(); // Update lines every frame
+            renderer.render(scene, camera);
+        }
+        animate();
+        
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth * 0.6, window.innerHeight * 0.8);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            updateLines(); // Update lines on resize
+        });
+        
+        window.addEventListener('scroll', () => {
+            updateLines(); // Update lines on scroll
+        });
+        
+    </script>
+    
+</body>
+</html>

@@ -1,659 +1,552 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta content="#fafafa" name="theme-color" />
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-  <meta name="author" content="Ben" />
-  <meta name="description" content="Geckery Disc" />
-  <meta name="keywords" content="parallax, css, effect, perspective, web, design, dev" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-  <title>Geckery</title>
-  <style>
-    /*************************************************************
-    HEADER
-    **************************************************************/
-    header {
-      position: relative;
-      min-height: 100vh;
-      width: 100%;
-      transform-style: inherit;
-      z-index: -1;
-    }
-    body {
-      background: #333;
-    }
+<html lang="en" class=" eradgbkzb idc0_350">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      <title>Geckery</title>
+      <meta name="description" content="I&#39;m a creative director a background and degree in commercial and photojournalistic photography, creating films in Melbourne and Bright.">
+      <meta property="og:title" content="Andy Hardy - Multidisciplinary Visual Creator - Andrew Hardy">
+      <meta property="og:discription" content="I&#39;m a creative director a background and degree in commercial and photojournalistic photography, creating films in Melbourne and Bright.">
+      <meta property="og:site_name" content="Andrew Hardy">
+      <meta property="og:type" content="website">
+      <meta property="og:image" content="https://andyhardy.co/media/site/63db9f7c11-1683607198/andy-meta-image-860x540-crop-q72.jpg">
+      <link rel="canonical" href="https://andyhardy.co/">
+      <link href="./files/normalize.css" rel="stylesheet">
+      <link href="./files/navigation.css" rel="stylesheet">
+      <link href="./files/photoswipe.css" rel="stylesheet">
+      <link href="./files/photoswipe-skin.css" rel="stylesheet">
+      <link href="./files/BeerSlider.css" rel="stylesheet">
+      <link href="./files/style.css" rel="stylesheet">
+      <style>
+         .magnetic {
+            transition: transform 0.2s ease-out;
+            position: relative;
+         }
 
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      display: block;
-      background: url(./images/verticaljungle.jpg) top center;
-      height: 300%;
-      background-size: cover;
-      transform: translateZ(-1px) scale(2.1);
-      min-height: 100%;
-      z-index: -2;
-    }
+             /* Slogan */
 
-    .parallax-layer {
-      position: absolute;
-      top: 0%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      height: 100%;
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
+             .slideshow-container {
+               display: flex;
+               justify-content: center;
+               align-items: flex-start; /* Align items to start */
+               flex-direction: row; /* Ensure they are side by side */
+               }
 
-    .parallax-layer.layer1 {
-      background-image: url('./images/leaf2.png');
-      transform: translateZ(-1px) scale(2);
-      z-index: -1;
-      left: -0%;
-      width: 150%;
-      height: 180%;
-    }
-
-    .parallax-layer.layer2 {
-      background-image: url('./images/leaf.png');
-      transform: translateZ(-0.5px) scale(2);
-      z-index: -2;
-      left: -0%;
-    }
-
-    .parallax-layer.layer3 {
-      background-image: url('./images/bottomleaves.jpg');
-      transform: translateZ(-0.3px) scale(1.5);
-      z-index: 0;
-      left: -0%;
-      width: 150%;
-      height: 150%;
-      margin-top: 100%;
-    }
-
-    /*************************************************************
-    SECTIONS
-    **************************************************************/
-    section {
-      position: relative;
-      min-height: 100vh;
-      width: 100%;
-      position: relative;
-      transform-style: inherit;
-    }
-
-    .section1 {
-      background: url(./images/parc3hment.jpg) top center;
-      background-size: cover;
-      border: #dadada;
-      border-width: 3px;
-      z-index: 1;
-      height: 110%;
-    }
-
-    .section2::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      display: block;
-      top: -80%;
-      background: url(./images/invalid.jpg) top center;
-      background-size: cover;
-      transform: translateZ(-.5px) scale(1.6);
-      z-index: -1;
-    }
-
-    /*************************************************************
-    HEADINGS
-    **************************************************************/
-    h1 {
-      font-size: 4rem;
-      text-align: center;
-      position: absolute;
-      padding: 1rem;
-      background: #fafafa;
-      box-shadow: 0 0 20px #333;
-      top: 50%;
-      left: 50%;
-      transform: translateZ(-1px) scale(2) translate(-25%, -25%);
-    }
-
-    .section1 h1 {
-      z-index: 3;
-      transform: translate(-50%, -50%);
-      box-shadow: none;
-    }
-
-    .section2 h1 {
-      transform: translateZ(-.3px) scale(1.3) translate(-39%, -39%);
-      z-index: 3;
-    }
-
-    /*************************************************************
-    BASIC STYLES
-    **************************************************************/
-    *,
-    *::before,
-    *::after,
-    :root {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    @import 'https://fonts.googleapis.com/css?family=Overlock:400,400i,700|Oleo+Script';
-
-    html {
-      overflow: hidden;
-      height: 100%;
-    }
-
-    body {
-      overflow-x: hidden;
-      overflow-y: scroll;
-      height: 100%;
-      perspective: 1px;
-      transform-style: preserve-3d;
-      font-size: 62.5%;
-      font-family: 'Overlock', Arial, Helvetica, sans-serif;
-    }
-
-    .author {
-      position: absolute;
-      z-index: 999;
-      top: 0;
-      right: 0;
-      padding: .5rem 1rem;
-      background: #fafafa;
-      border-bottom-left-radius: 5px;
-      transition: 300ms;
-    }
-
-    .author a,
-    .author a:visited {
-      color: #333;
-      text-decoration: none;
-      display: block;
-      transition: 300ms;
-    }
-
-    .author:hover,
-    .author:active {
-      box-shadow: 0 0 10px #33333350;
-    }
-    .banner1-container {
-  gap: var(--dl-space-space-unit);
-  width: 699px;
-  height: 403px;
-  display: flex;
-  opacity: 1;
-  position: relative;
-  margin-top: 10px;
-  align-items: center;
-  border-color: #000000;
-  border-width: 0px;
-  margin-bottom: 10px;
-}
-.banner1-image {
-  top: -305px;
-  left: -332px;
-  width: vh100;
-  height: 1005px;
-  z-index: 0;
-  position: absolute;
-  object-fit: cover;
-  padding-bottom: 250px;
-}
-.banner1-max-width {
-  gap: var(--dl-space-space-oneandhalfunits);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.banner1-container1 {
-  gap: var(--dl-space-space-halfunit);
-  display: flex;
-  position: relative;
-  align-items: center;
-  flex-direction: column;
-}
-.banner1-title {
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #ffffff;
-  z-index: 2;
-  position: absolute;
-  font-size: 100px;
-  text-align: center;
-}
-.banner1-text {
-  top: 300px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #ffffff;
-  z-index: 2;
-  width: 800px;
-  position: absolute;
-  font-size: 60px;
-  text-align: center;
-  border-color: var(--dl-color-theme-neutral-dark);
-  border-width: 0px;
-  padding-bottom: 2px;
-}
-.banner1-button {
-  top: 150%;
-  left: 50%;
-  transform: translateX(-50%);
-  position: absolute;
-}
-.banner1-button1 {
-    cursor: pointer;
-  top: 100px;
-  fill: #dadada00;
-  left: 30%;
-  transform: translateX(-50%);
-  color: #dadada;
-  position: absolute;
-  font-size: 34px;
-  border-width: 0px;
-  background-color: transparent;
-  margin-right: 10%;
-}
-.banner1-button2 {
-    cursor: pointer;
-  top: 100px;
-  fill: #dadada00;
-  left: 70%;
-  transform: translateX(-50%);
-  color: #dadada;
-  position: absolute;
-  font-size: 34px;
-  border-width: 0px;
-  background-color: transparent;
-  margin-right: 10%;
-}
-.banner1-root-class-name {
-  margin-top: 150px;
-  margin-bottom: 150px;
-}
-
-.button5 {
-  cursor: pointer;
-  font-weight: 700;
-  font-family: Helvetica,"sans-serif";
-  transition: all .2s;
-  padding: 10px 20px;
-  border-radius: 100px;
-  background: #2290ac;
-  border: 1px solid transparent;
-  display: flex;
-  align-items: center;
-  font-size: 15px;
-  margin-top: 500px;
-}
-
-.button5:hover {
-  background: #3bc2e4;
-}
-
-.button5 > svg {
-  width: 34px;
-  margin-left: 10px;
-  transition: transform .3s ease-in-out;
-}
-
-.button5:hover svg {
-  transform: translateX(5px);
-}
-
-.button5:active {
-  transform: scale(0.95);
-}
+               /* Media query for mobile devices */
+               @media (max-width: 768px) { /* Adjust the max-width as needed */
+               .slideshow-container {
+                  flex-direction: column; /* Stack items vertically */
+                  align-items: center; /* Center items horizontally */
+               }
+               }
 
 
-.workstation {
-      display: flex;
-    }
+            .mySlides {
+               flex: 1; /* Equal space for each slide */
+               max-width: 33%; /* Ensure the slides fit in a row */
+               box-sizing: border-box; /* Include padding/border in element's width/height */
+            }
+            /* Media query for mobile devices */
+            @media (max-width: 768px) { /* Adjust the max-width as needed */
+               .mySlides {
+                  flex-direction: column; /* Stack items vertically */
+                  align-items: center; /* Center items horizontally */
+                  max-width: 90%; /* Ensure the slides fit in a row */
+               }
+               }
 
-    .model-container {
-      width: 40%;
-      height: 70%;
-      margin-top: 5%;
-    }
+            .slogan {
+               color: aliceblue;
+               text-align: center;
+               display: flex;
+               flex-direction: column;
+               justify-content: center;
+               margin: 5% auto; /* Adjust as needed */
+               font-size: 40px;
+               font-family: 'STIX Two Text', serif;
+               font-weight: 500;
+               line-height: 1.5;
+               width: 80%; /* Adjust as needed */
+               max-width: fit-content;
+               height: 300px;
+            }
 
-    model-viewer {
-      width: 100%;
-      height: 100%;
-    }
+            .slogan .source {
+               font-size: 20px; /* Adjust as needed */
+               margin-top: 5px; /* Adjust as needed */
+               color: rgb(162, 167, 172);
+            }
 
-    .section1-container {
-    display: flex;
-  }
-  .section1-left-side{
-    flex: 1;
-    padding: 20px;
-    height: 1000px;
-  }
-  .section1-right-side {
-    flex: 1;
-    padding: 20px;
-    height: 1000px;
-    margin-top: 180px;
-    margin-right: 70px;
-  }
-  .section1-title {
-    font-size: 64px;
-    font-weight: bolder;
-    margin-bottom: 15px;
-    color: white;
-    margin-top: 30px;
+            .container {
+               display: flex;
+               width: 100vw;
+               height: 800px;
+               padding: 20px;
+               padding-bottom: 200px;
+               padding-top: 50px;
+               background-color: #000;
+            }
+
+            .right-half {
+               background-color: #000;
+               flex: 1;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               padding: 20px;
+            }
+
+            .left-half {
+               flex: 1;
+               display: inline-block;
+               justify-content: center;
+               padding: 20px;
+               color: #b6b6b6;
+               padding-left: 50px; 
+               background-color: #000;
+            }
+
+            model-viewer {
+               width: 100%;
+               height: 100%;
+               max-width: 100%;
+               max-height: 100%;
+            }
+
+            .reviews {
+               padding-top: 250px;
+               padding-bottom: 400px;
+            }
+            /* Media query for mobile devices */
+            @media (max-width: 768px) { /* Adjust the max-width as needed */
+               .reviews {
+               padding-top: 150px;
+               padding-bottom: 200px;
+               }
+            }
+
+            .about{
+               padding-top: 400px;
+               margin-bottom: 100px;
+            }
+
+
+            .container {
+            display: flex;
+            height: 120vh;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding-bottom: 200px;
+        }
+        .text-container {
+            position: absolute;
+            width: 20%;
+            height: 80%;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .left {
+            left: 0;
+            top: 50%;
+            text-align: right;
+        }
+        .right {
+            right: 0;
+            top: 50%;
+            text-align: left;
+        }
+        .model-container {
+            width: 60%;
+            height: 80%;
+            position: relative;
+        }
+        canvas {
+            display: block;
+            background-color: transparent;
+        }
+        .svgcss {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        #text1, #text2, #text3, #text4, #text5, #text6 { /*should have made a class lmao */
+            text-decoration: underline;
+            text-decoration-color: white; /* Set underline color to white */
+            text-decoration-thickness: 2px; /* Adjust thickness as needed */
+         }
+                     
+      </style>
+   </head>
+   <body class="loaded">
+      <div class="overlay-transition" style="display: none;"></div>
+      <main class="" id="home">
+         <div class="black-overlay"></div>
+         <div class="navigation-fade"></div>
+         <a class="logo animatelink">
+         <img src="./files/logo.webp" height="23">
+         </a>
+         <a href="#products" class="magnetic btn nav-cta-btn"><span>View our Products</span></a>
+         <div class="social-ico-block">
+            <a href="https://www.instagram.com" target="_blank" class="social-ico magnetic">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M12,3.8c2.67,0,2.986.01,4.041.058A5.552,5.552,0,0,1,17.9,4.2a3.31,3.31,0,0,1,1.9,1.9,5.552,5.552,0,0,1,.344,1.857C20.188,9.014,20.2,9.33,20.2,12s-.01,2.986-.058,4.041A5.552,5.552,0,0,1,19.8,17.9a3.31,3.31,0,0,1-1.9,1.9,5.552,5.552,0,0,1-1.857.344c-1.054.048-1.371.058-4.041.058s-2.987-.01-4.041-.058A5.552,5.552,0,0,1,6.1,19.8a3.31,3.31,0,0,1-1.9-1.9,5.552,5.552,0,0,1-.344-1.857C3.812,14.986,3.8,14.67,3.8,12s.01-2.986.058-4.041A5.552,5.552,0,0,1,4.2,6.1,3.31,3.31,0,0,1,6.1,4.2,5.552,5.552,0,0,1,7.959,3.86C9.014,3.812,9.33,3.8,12,3.8M12,2c-2.716,0-3.056.012-4.123.06a7.355,7.355,0,0,0-2.427.465A5.106,5.106,0,0,0,2.525,5.45,7.355,7.355,0,0,0,2.06,7.877C2.012,8.944,2,9.284,2,12s.012,3.056.06,4.123a7.355,7.355,0,0,0,.465,2.427A5.106,5.106,0,0,0,5.45,21.475a7.355,7.355,0,0,0,2.427.465C8.944,21.989,9.284,22,12,22s3.056-.011,4.123-.06a7.355,7.355,0,0,0,2.427-.465,5.106,5.106,0,0,0,2.925-2.925,7.355,7.355,0,0,0,.465-2.427c.048-1.067.06-1.407.06-4.123s-.012-3.056-.06-4.123a7.355,7.355,0,0,0-.465-2.427A5.106,5.106,0,0,0,18.55,2.525a7.355,7.355,0,0,0-2.427-.465C15.056,2.012,14.716,2,12,2Z"></path>
+                  <path d="M12,6.865A5.135,5.135,0,1,0,17.135,12,5.135,5.135,0,0,0,12,6.865Zm0,8.468A3.333,3.333,0,1,1,15.333,12,3.333,3.333,0,0,1,12,15.333Z"></path>
+                  <circle cx="17.338" cy="6.662" r="1.2"></circle>
+               </svg>
+            </a>
+            <a href="https://tiktok.com" target="_blank" class="social-ico magnetic">
+               <svg fill="#000000" viewBox="0 0 512 512" id="icons" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M412.19,118.66a109.27,109.27,0,0,1-9.45-5.5,132.87,132.87,0,0,1-24.27-20.62c-18.1-20.71-24.86-41.72-27.35-56.43h.1C349.14,23.9,350,16,350.13,16H267.69V334.78c0,4.28,0,8.51-.18,12.69,0,.52-.05,1-.08,1.56,0,.23,0,.47-.05.71,0,.06,0,.12,0,.18a70,70,0,0,1-35.22,55.56,68.8,68.8,0,0,1-34.11,9c-38.41,0-69.54-31.32-69.54-70s31.13-70,69.54-70a68.9,68.9,0,0,1,21.41,3.39l.1-83.94a153.14,153.14,0,0,0-118,34.52,161.79,161.79,0,0,0-35.3,43.53c-3.48,6-16.61,30.11-18.2,69.24-1,22.21,5.67,45.22,8.85,54.73v.2c2,5.6,9.75,24.71,22.38,40.82A167.53,167.53,0,0,0,115,470.66v-.2l.2.2C155.11,497.78,199.36,496,199.36,496c7.66-.31,33.32,0,62.46-13.81,32.32-15.31,50.72-38.12,50.72-38.12a158.46,158.46,0,0,0,27.64-45.93c7.46-19.61,9.95-43.13,9.95-52.53V176.49c1,.6,14.32,9.41,14.32,9.41s19.19,12.3,49.13,20.31c21.48,5.7,50.42,6.9,50.42,6.9V131.27C453.86,132.37,433.27,129.17,412.19,118.66Z" />
+                </svg>
+            </a>
+            <a href="https://discord.gg/bk5wFZXe8e" target="_blank" class="social-ico magnetic">
+               <svg viewBox="0 -28.5 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">&nbsp; &nbsp; <g>&nbsp; &nbsp; &nbsp; &nbsp;
+                  <path d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z" fill="#5865F2" fill-rule="nonzero" />&nbsp; &nbsp; </g>
+                </svg>
+            </a>
+            <a href="https://www.youtube.com" target="_blank" class="social-ico magnetic">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M22.062,6.927A2.631,2.631,0,0,0,20.234,5.1c-1.637-.439-8.224-.439-8.224-.439S5.439,4.652,3.785,5.1A2.631,2.631,0,0,0,1.957,6.927,27.322,27.322,0,0,0,1.5,12.009a27.287,27.287,0,0,0,.456,5.062A2.631,2.631,0,0,0,3.785,18.9c1.635.44,8.225.44,8.225.44s6.57,0,8.224-.44a2.631,2.631,0,0,0,1.828-1.827,27.364,27.364,0,0,0,.438-5.062A27.406,27.406,0,0,0,22.062,6.927ZM9.907,15.152v-6.3l5.483,3.153Z"></path>
+               </svg>
+            </a>
+         </div>
+         <div class="home-overlay fade-in appear">
+            <img src="./files/logo.webp" height="23">
+         </div>
+         <a href="#" class="logo-home">
+         <img src="./files/logo.webp" height="23">
+         </a>
+         <header>
+            <div class="parallax desktop">
+               <div class="layer parallax-layer" data-speed="-0.7" style="background: url(./files/background.jpg) center center / cover; transform: translate3d(0px, 0px, 0px);"></div>
+               <div class="layer parallax-layer fade-in appear" data-speed="-0.5" style="background: url(/images/geckery.webp) center center / cover; transform: translate3d(0px, 0px, 0px);"></div>
+               <div class="layer parallax-layer" data-speed="-0.2" style="background: url(./files/teree.webp) center center / cover; transform: translate3d(0px, 0px, 0px);"></div>
+            </div>
+            <div class="bottom-fade"></div>
+            <div class="location">
+
+               <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Base of the laser cutter -->
+                  <rect x="10" y="70" width="180" height="10" fill="white" />
+                  
+                  <!-- Laser head with triangle tip -->
+                  <g id="laser-head">
+                    <rect x="30" y="20" width="20" height="40" fill="white">
+                      <animate
+                        attributeName="x"
+                        values="30;150;30"
+                        dur="4s"
+                        repeatCount="indefinite"
+                      />
+                    </rect>
+                    <polygon points="50,40 50,60 60,50" fill="white">
+                      <animate
+                        attributeName="points"
+                        values="50,40 50,60 60,50;170,40 170,60 180,50;50,40 50,60 60,50"
+                        dur="4s"
+                        repeatCount="indefinite"
+                      />
+                    </polygon>
+                  </g>
+                  
+                  <!-- Laser beam -->
+                  <line id="laser-beam" x1="50" y1="50" x2="50" y2="70" stroke="white" stroke-width="2" visibility="hidden">
+                    <animate attributeName="visibility" values="hidden;visible;hidden" keyTimes="0;0.5;1" dur="4s" repeatCount="indefinite" />
+                    <animate attributeName="x1" values="50;170;50" dur="4s" repeatCount="indefinite" />
+                    <animate attributeName="x2" values="50;170;50" dur="4s" repeatCount="indefinite" />
+                  </line>
+                </svg>
+
+               <a href="/laser" style="color: #b6b6b6; text-decoration: underline;">View our Laser Cutter</a>
+               </div>
+            <div class="right-bottom-text"><span>© 2024 Geckery
+            </span></div>
+         </header>
+
+         <section class="reviews">
+            <div class="wrap-wide">
+               <!-- Now ready for the fun part? The shop!!! (not fun) -->
+
+               <div class="slideshow-container">
+                  <div class="mySlides fade">
+                      <div class="slogan">
+                          "The amazing quality on my workbench exceeds my expectations for any case."
+                          <div class="source">
+                              - IGN
+                          </div>
+                      </div>     
+                  </div>
+                
+                  <div class="mySlides fade">
+                      <div class="slogan">
+                          "The cuts on these things are f*cking amazing!"
+                          <div class="source">
+                              - Peter Griffin
+                          </div>
+                      </div>     
+                  </div>
+                
+                  <div class="mySlides fade">
+                      <div class="slogan">
+                          "Fortnite Battlepass"
+                          <div class="source">
+                              - Peter
+                          </div>
+                      </div>     
+                  </div>
+              </div>
+              
+
+            </div>
+         </section>
+
+
+
+         </section>
+         <section class="about">
+            <div class="background-image" style="background: url(./images/banner.jpg) center center; background-size: cover;"></div>
+            <div class="bottom-fade"></div>
+            <div class="wrap-text">
+               <p>Introducing our premium laser-cut wooden PC case, crafted with precision for the modern enthusiast. This sleek and stylish case combines the warmth of natural wood with robust durability, offering superior airflow and easy assembly. Elevate your setup with a touch of elegance and unique craftsmanship. Perfect for those who value both performance and aesthetics.</p>
+            </div>
+         </section>
+
+         <script type="importmap">
+            {
+              "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.130.1/build/three.module.js",
+                "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.130.1/examples/jsm/"
+              }
+            }
+        </script>
+        <svg class="svgcss" id="linesLayer"></svg>
+        <div class="container">
+            <div class="text-container left">
+               <p>Elevate your PC setup with the Geckery Wooden Laser Cut PC Case, a masterpiece of <t id="text1" data-position="bottom-right">Wood</t></p>
+                <p id="text2" data-position="bottom-right">Monitor</p>
+                <p id="text4">Word 4</p>
+            </div>
+            <div class="model-container">
+                <canvas id="modelCanvas"></canvas>
+            </div>
+            <div class="text-container right">
+                <p id="text3" data-position="bottom-left">Mouse</p>
+                <p id="text5">Word 5</p> <!-- add data-position="bottom-right" or data-position="bottom-left" -->
+                <p id="text6">Word 6</p>
+            </div>
+        </div>
     
-  }
-  .section1-line {
-    border-bottom: 4px solid rgb(255, 255, 255);
-    border-radius: 10%;
-    margin-bottom: 20px;
-    width: 213%;
-  }
-  .section1-text {
-    max-width: 100%;
-    color: white;
-    margin-left: 60px;
-    font-weight: 700;
-    font-family: Helvetica,"sans-serif";
-    font-size: 26px;
-    margin-top: 40px;
-  }
+        <script type="module">
+        import * as THREE from 'three';
+        import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+        import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+        
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('modelCanvas'), alpha: true });
+        renderer.setSize(window.innerWidth * 0.6, window.innerHeight * 0.8);
+        renderer.setClearColor(0x000000, 0); // Transparent background (0x000000, 0)
+        camera.position.z = 5;
+        
+        // Adding lights
+        const ambientLight = new THREE.AmbientLight(0xffffff, 2); // Brighter ambient light
+        scene.add(ambientLight);
+        
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1); // White light
+        directionalLight.position.set(1, 1, 1).normalize();
+        scene.add(directionalLight);
+        
+        const controls = new OrbitControls(camera, renderer.domElement);
+         controls.enableZoom = false; // Disable zooming
+         controls.enablePan = false;  // Disable panning (moving)
+         controls.enableRotate = true; // Enable rotation
 
-  .thq-heading-3 {
-    font-size: 26px;
-    font-family: STIX Two Text;
-    font-weight: 600;
-    line-height: 1.5;
-}
+        
+        const loader = new GLTFLoader();
+        let model;
+        loader.load('./models/tablecase.glb', function (gltf) {
+            model = gltf.scene;
+            scene.add(model);
 
-.thq-icon-medium path {
-  fill: #ffffff; /* Set fill color to white */
-}
+            // Center the model in the canvas
+            centerModel(model);
+
+            addDotsToModel(); // Add dots to the model
+            updateLines(); // Initial lines update
+         });
+        
+         let modelOffset = new THREE.Vector3();
+
+         function centerModel(model) {
+            // Calculate the bounding box of the model
+            const box = new THREE.Box3().setFromObject(model);
+            const center = box.getCenter(new THREE.Vector3());
+
+            // Store the offset
+            modelOffset.copy(center);
+
+            // Translate the model to the center of the canvas
+            model.position.sub(center);
+         }
+
+        function addDotsToModel() {
+            const geometry = new THREE.SphereGeometry(0.05, 32, 32);
+            const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
+            const dotPositions = [ // By word number. text1 = the first entry and so on
+                new THREE.Vector3(0, -0.2, 1),
+                new THREE.Vector3(0, 1, -0.7),
+                new THREE.Vector3(0.8, 0.1, 0),
+                //new THREE.Vector3(1, 1, -1),
+                //new THREE.Vector3(-1, -1, -1),
+                //new THREE.Vector3(0, 0, 0)
+            ];
+    
+            dotPositions.forEach((position, index) => {
+                const dot = new THREE.Mesh(geometry, material);
+                dot.position.copy(position);
+                dot.userData = { id: `text${index + 1}` }; // Add id for reference
+                model.add(dot);
+            });
+        }
+        
+        function updateLines() {
+            if (!model) return; // Ensure model is loaded
+
+            const svg = document.getElementById('linesLayer');
+            svg.innerHTML = ''; // Clear existing lines
+
+            // Get the vertical and horizontal offsets of the modelCanvas relative to the top-left of the page
+            const modelCanvas = document.getElementById('modelCanvas');
+            const canvasRect = modelCanvas.getBoundingClientRect();
+            const canvasOffsetX = canvasRect.left + window.scrollX;
+            const canvasOffsetY = canvasRect.top + window.scrollY;
+
+            // Filter text elements by IDs that exist in the dot userData
+            const validIds = ['text1', 'text2', 'text3', 'text4', 'text5', 'text6'];
+            const textElements = validIds.map(id => document.getElementById(id)).filter(el => el);
+            const textPositions = textElements.map(textElement => {
+               const rect = textElement.getBoundingClientRect();
+               const position = textElement.getAttribute('data-position');
+               let x, y;
+
+               // Determine x, y based on the data-position attribute
+               if (position === 'bottom-right') {
+                     x = rect.left + window.scrollX + rect.width;
+                     y = rect.top + window.scrollY + rect.height;
+               } else if (position === 'bottom-left') {
+                     x = rect.left + window.scrollX;
+                     y = rect.top + window.scrollY + rect.height;
+               } else {
+                     // Default to bottom-left if position is not recognized
+                     x = rect.left + window.scrollX;
+                     y = rect.top + window.scrollY + rect.height;
+               }
+
+               return {
+                     id: textElement.id,
+                     x: x,
+                     y: y,
+                     width: rect.width
+               };
+            });
+
+            // Convert 3D coordinates to 2D screen coordinates
+            const widthHalf = window.innerWidth * 0.6 / 2;
+            const heightHalf = window.innerHeight * 0.8 / 2;
+            const modelDots = Array.from(model.children).filter(child => child.type === 'Mesh');
+
+            modelDots.forEach(dot => {
+               // Apply the model offset in the correct direction
+               const position = dot.position.clone().sub(modelOffset);
+
+               const vector = position.project(camera);
+               const dot2D = {
+                     x: (vector.x * widthHalf) + widthHalf,
+                     y: -(vector.y * heightHalf) + heightHalf
+               };
+
+               const textElement = textPositions.find(text => text.id === dot.userData.id);
+               if (textElement) {
+                     const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                     line.setAttribute('x1', textElement.x);
+                     line.setAttribute('y1', textElement.y);
+                     line.setAttribute('x2', dot2D.x + canvasOffsetX);
+                     line.setAttribute('y2', dot2D.y + canvasOffsetY);
+                     line.setAttribute('stroke', 'white');
+                     line.setAttribute('stroke-width', '2');
+                     svg.appendChild(line);
+               }
+            });
+         }
 
 
-.carousel-wrapper {
-  width: 100%;
-  max-width: 900px;
-  aspect-ratio: 16/13;
-  overflow: hidden;
-  margin: 0 2rem;
-  position: relative;
-  border: 1px solid white; /* Add a white border */
-  border-radius: 12px; /* Round the border */
-}
 
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            updateLines(); // Update lines every frame
+            renderer.render(scene, camera);
+        }
+        animate();
+        
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth * 0.6, window.innerHeight * 0.8);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            updateLines(); // Update lines on resize
+        });
+        
+        window.addEventListener('scroll', () => {
+            updateLines(); // Update lines on scroll
+        });
+        </script>
 
-.slide {
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  position: absolute;
-  transition: transform 300ms ease-out;
-}
-
-.slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: inherit;
-}
-
-.carousel-wrapper .btn {
-  font-size: 2rem;
-  background: rgba(0, 0, 0, 0.7);
-  color: #00c2d8;
-  padding: 8px 10px;
-  border-radius: 50%;
-  border: none;
-  margin: 10px;
-  position: absolute;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-.carousel-wrapper .btn:hover {
-  background: rgba(0, 0, 0, 1);
-}
-
-.btn.previous {
-  top: 50%;
-  left: 0;
-}
-.btn.next {
-  top: 50%;
-  right: 0;
-}
-
-
-
-  </style>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-</head>
-<body>
-  <header>
-    <div>
-        <link href="./banner1.css" rel="stylesheet" />
-        <div class="banner1-container thq-section-padding">
-          <div class="banner1-max-width thq-section-max-width">
-            <div class="banner1-container1">
-              <h2 class="banner1-title thq-heading-2"><span>Geckery</span></h2>
-              <h3 class="banner1-text thq-heading-3">
-                <span style="font-size: 56px;">The most advanced wooden cases in the world</span>
-              </h3>
+         <footer>
+            <div class="background-image" style="background: url(/files/rainforest.webp) center center; background-size: cover;"></div>
+            <div class="top-fade"></div>
+            <div class="left-fade"></div>
+            <div class="wrap-text">
+               <a href="mailto:hello@geckery.com" class="mail">hello@geckery.com</a>
+               <div class="logo-row"><img src="./files/logo.webp" height="23"></div>
+               <div class="credits-row">
+                  <li>© 2024 Geckery</li>
+                  <li>/</li>
+                  <li><a href="https://www.shopify.com/" target="_blank">Made possible with Shopify</a></li>
+               </div>
             </div>
-          </div>
-          <button id="viewProductsButton" class="button5">
-            <span>View our Products</span>
-            <svg width="34" height="34" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="37" cy="37" r="35.5" stroke="black" stroke-width="3"></circle>
-                <path d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z" fill="black"></path>
-            </svg>
-          </button>                       
-          <button type="button" class="banner1-button1 button">
-            <span>Products</span>
-          </button>
-          <button type="button" class="banner1-button2 button">
-            <span>About Us</span>
-          </button>
-        </div>
-      </div>
-      <div class="parallax-layer layer1">awdawda</div>
-      <div class="parallax-layer layer2">dadadad</div>
-      <div class="parallax-layer layer3">ssssssssssssssss</div>
-  </header>
-  <section id="section1" class="section1">
-    <div class="section1-container">
-        <div class="section1-left-side">
-          <div class="section1-title">&nbsp;&nbsp;&nbsp;&nbsp;The Stump</div>
-          <div class="section1-line"></div>
-          <div class="section1-text">
-            <p>• This is good because..</p>
-            <br>
-            <p>• Price point n stuff...</p>
-            <br>
-            <p>• eco-friendly...</p>
-            <br>
-            <p>• fortnite n stuff...</p>
-            <br>
-            <p>• cool packaging...</p>
-            <br>
-            <p>• wood n stuff...</p>
-          </div>
-        </div>
-        <div class="section1-right-side">
-          <div class="carousel-wrapper">
-            <!-- Slides -->
-            <div class="slide" data-slide>
-              <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
-                <model-viewer id="productModel" alt="PC Case Model" src="models/case1.glb" ar environment-image="models/blue.hdr" shadow-intensity="1" camera-controls="none" touch-action="pan-y" disable-zoom></model-viewer>
-            </div>
-            <div class="slide" data-slide>
-              <img src="https://m.media-amazon.com/images/I/81KhtncsNAL.jpg" alt="Image">
-            </div>
-            <div class="slide" data-slide>
-              <img src="https://m.media-amazon.com/images/I/81KhtncsNAL.jpg" alt="Image">
-            </div>
-            <div class="slide" data-slide>
-              <img src="https://m.media-amazon.com/images/I/81KhtncsNAL.jpg" alt="Image">
-            </div>
-            <div class="slide" data-slide>
-              <img src="https://m.media-amazon.com/images/I/81KhtncsNAL.jpg" alt="Image">
-            </div>
-      
-            <!-- Next and Previous Buttons -->
-            <button class="btn previous" data-button="previous">
-              <i class="bi bi-chevron-left"></i>
-            </button>
-            <button class="btn next" data-button="next">
-              <i class="bi bi-chevron-right"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-  </section>
-  <section class="section2" id="section2">
-    <!-- Your HTML code here -->
-    <link rel="stylesheet" href="./style.css" />
-    <div>
-      <link href="./contact1.css" rel="stylesheet" />
-      <div class="contact1-contact20 thq-section-padding">
-        <div class="contact1-max-width thq-section-max-width">
-          <div class="contact1-content">
-            <svg viewBox="0 0 1024 1024" class="thq-icon-medium">
-              <path d="M854 342v-86l-342 214-342-214v86l342 212zM854 170q34 0 59 26t25 60v512q0 34-25 60t-59 26h-684q-34 0-59-26t-25-60v-512q0-34 25-60t59-26h684z"></path>
-            </svg>
-            <div class="contact1-contact-info">
-                <div class="contact1-content1">
-                  <h3 class="contact1-text thq-heading-3" style="font-size: 36px;">About Us</h3>
-                  <p class="contact1-text1 thq-body-large">
-                    <span>
-                      Geckery is a pioneering venture founded by Nathaniel
-                      Comiskey, Joshua Suprenant, and Ben Kudaraskas, driven by a
-                      passion for blending affordability with craftsmanship in the
-                      PC case industry. Our team is dedicated to disrupting the
-                      market with our innovative approach, leveraging cutting-edge
-                      technology to deliver high-quality wooden cases that stand
-                      out for their style and sustainability.
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="contact1-content2">
-              <svg viewBox="0 0 1024 1024" class="thq-icon-medium">
-                <path
-                  d="M282 460q96 186 282 282l94-94q20-20 44-10 72 24 152 24 18 0 30 12t12 30v150q0 18-12 30t-30 12q-300 0-513-213t-213-513q0-18 12-30t30-12h150q18 0 30 12t12 30q0 80 24 152 8 26-10 44z"
-                ></path>
-              </svg>
-              <div class="contact1-contact-info1">
-                <div class="contact1-content3">
-                  <h3 class="contact1-text2 thq-heading-3" style="font-size: 36px;">Our Mission</h3>
-                  <p class="contact1-text3 thq-body-large">
-                    <span>
-                      At Geckery, our mission is simple yet profound: to redefine
-                      the PC case experience by offering affordable, eco-friendly,
-                      and stylish alternatives to traditional materials. We strive
-                      to empower users to make a statement with their builds while
-                      enjoying the performance and functionality they deserve, all
-                      without compromising on quality or breaking the bank
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="contact1-content4">
-              <svg viewBox="0 0 1024 1024" class="thq-icon-medium">
-                <path
-                  d="M512 0c-176.732 0-320 143.268-320 320 0 320 320 704 320 704s320-384 320-704c0-176.732-143.27-320-320-320zM512 512c-106.040 0-192-85.96-192-192s85.96-192 192-192 192 85.96 192 192-85.96 192-192 192z"
-                ></path>
-              </svg>
-              <div class="contact1-contact-info2">
-                <div class="contact1-content5">
-                  <h3 class="contact1-text4 thq-heading-3">
-                    <span style="font-size: 36px;" >Contact Us</span>
-                    <br />
-                  </h3>
-                  <p class="contact1-text7 thq-body-large">
-                    <span>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Suspendisse varius enim in ero.
-                    </span>
-                  </p>
-                </div>
-                <span class="contact1-address thq-body-small">
-                  <span>email@geckery.com</span>
-                </span>
-              </div>
-            </div>
+         </footer>
+      </main>
+      <script src="./files/jquery.min.js.download"></script>
+      <script src="./files/jquery-3.4.1.min.js.download"></script>
+      <script src="./files/masonry.pkgd.js.download"></script>
+      <script src="./files/navigation.js.download"></script> <script src="./files/cookies.js.download"></script> <script src="./files/observers.js.download"></script> <script src="./files/parallax.js.download"></script> <script src="./files/photoswipe.min.js.download"></script> <script src="./files/photoswipe-ui-default.min.js.download"></script> <script src="./files/photoswipe.js.download"></script>
 
-<script>
-  const slides = document.querySelectorAll("[data-slide]");
-  const buttons = document.querySelectorAll("[data-button]");
-
-  let currSlide = 0;
-  let maxSlide = slides.length - 1;
-
-  const updateCarousel = (number = 0) => {
-    slides.forEach((slide, index) => {
-      slide.style.transform = `translateX(${(index - number) * 100}%)`;
-    });
-  };
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      button.dataset.button == "next" ? ++currSlide : --currSlide;
-
-      if (currSlide > maxSlide) {
-        currSlide = 0;
-      } else if (currSlide < 0) {
-        currSlide = maxSlide;
-      }
-
-      updateCarousel(currSlide);
-    });
-  });
-
-  updateCarousel();
-
-    document.getElementById('viewProductsButton').addEventListener('click', function() {
-      const section1 = document.getElementById('section1');
-      // Scroll smoothly to section1
-      section1.scrollIntoView({ behavior: 'smooth' });
-    });
-
-    window.addEventListener('scroll', function() {
-      const scrollTop = window.pageYOffset;
-      document.querySelector('.layer1').style.transform = `translateY(${scrollTop * 0.2}px)`;
-      document.querySelector('.layer2').style.transform = `translateY(${scrollTop * 0.4}px)`;
-      document.querySelector('.layer3').style.transform = `translateY(${scrollTop * 0.6}px)`;
-    });
-
-    const productsButton = document.querySelector('.banner1-button1');
-    const aboutUsButton = document.querySelector('.banner1-button2');
-
-    // Function to scroll to Section 1
-    function scrollToSection1() {
-        const section1 = document.getElementById('section1');
-        section1.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Function to scroll to Section 2
-    function scrollToSection2() {
-        const section2 = document.getElementById('section2');
-        section2.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Add click event listeners to the buttons
-    productsButton.addEventListener('click', scrollToSection1);
-    aboutUsButton.addEventListener('click', scrollToSection2);
-  </script>
+      <script>
+         document.addEventListener('DOMContentLoaded', () => {
+             const buttons = document.querySelectorAll('.magnetic');
+             
+             buttons.forEach(button => {
+                 button.addEventListener('mousemove', (e) => {
+                     const rect = button.getBoundingClientRect();
+                     const x = e.clientX - rect.left - rect.width / 2;
+                     const y = e.clientY - rect.top - rect.height / 2;
+                     button.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+                 });
+         
+                 button.addEventListener('mouseleave', () => {
+                     button.style.transform = 'translate(0px, 0px)';
+                 });
+             });
+         });
+         </script>
+         
+   </body>
+</html>
