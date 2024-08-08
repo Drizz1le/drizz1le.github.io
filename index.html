@@ -179,6 +179,28 @@
       </style>
    </head>
    <body class="loaded">
+      
+      <script>
+         function scrollToHash() {
+             // Get the hash from the URL and remove the '#' character
+             const hash = window.location.hash.substring(1);
+             const targetElement = document.getElementById(hash);
+ 
+             if (targetElement) {
+                 targetElement.scrollIntoView({
+                     behavior: 'smooth',
+                     block: 'start'  // Ensures the element is aligned to the top of the viewport
+                 });
+             }
+         }
+ 
+         // Attach the scroll to hash function to the hashchange event
+         window.addEventListener('hashchange', scrollToHash);
+ 
+         // Also run it on page load to handle the initial hash
+         document.addEventListener('DOMContentLoaded', scrollToHash);
+     </script>
+     
       <div class="overlay-transition" style="display: none;"></div>
       <main class="" id="home">
          <div class="black-overlay"></div>
@@ -264,7 +286,7 @@
             </span></div>
          </header>
 
-         <section class="reviews">
+         <section id="reviews" class="reviews">
             <div class="wrap-wide">
                <!-- Now ready for the fun part? The shop!!! (not fun) -->
 
@@ -321,7 +343,7 @@
             }
         </script>
         <svg class="svgcss" id="linesLayer"></svg>
-        <div class="container">
+        <div id="products" class="container">
             <div class="text-container left">
                <p>Elevate your PC setup with the Geckery Wooden Laser Cut PC Case, a masterpiece of <t id="text1" data-position="bottom-right">Wood</t></p>
                 <p id="text2" data-position="bottom-right">Monitor</p>
