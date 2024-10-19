@@ -26,9 +26,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 17px 40px;
+            padding: 12px 40px;
             z-index: 1000;
-            border-bottom: 2px solid black; /* Black border at the bottom */
+            border-bottom: 1px solid grey; /* Black border at the bottom */
         }
 
         .header-logo img {
@@ -42,7 +42,7 @@
 
         .price {
             margin-right: 20px;
-            font-size: 18px;
+            font-size: 26px;
         }
 
         .checkout-button {
@@ -153,6 +153,134 @@
             font-weight: 600;
         }
 
+        /* General button styling */
+        .btn {
+            padding: 10px 20px;
+            background-color: rgba(119, 160, 241, 0.493);
+            border: 2px solid rgba(0, 0, 0, 0.5);
+            color: black;
+            font-size: 16px;
+            cursor: pointer;
+            outline: none;
+            width: 100%;
+            text-align: left;
+            align-items: center;
+        }
+
+        /* Left button with rounded left corners */
+        .left-btn {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            border-right: none; /* Remove the border between the buttons */
+        }
+
+        /* Right button with rounded right corners */
+        .right-btn {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border-left: none; /* Remove the border between the buttons */
+        }
+
+        /* Change the appearance of the buttons on hover */
+        .btn:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .model-button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0px;
+        }
+
+        .circle-indicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #333;
+            margin: 10px auto 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .circle-indicator.filled {
+            background-color: #333; /* Circle fills in when selected */
+        }
+
+        .geckery-selected {
+            border-color: #333; /* Change the border color when selected */
+            background-color: #ddd; /* Optional: Change the background when selected */
+        }
+
+        .engraving-section {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+            background-color: #f9f9f9;
+            display: none; /* Hidden by default */
+        }
+
+        .engraving-section.active {
+            display: block;
+        }
+
+        .engraving-section .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .engraving-options {
+            margin: 20px 0;
+        }
+
+        .engraving-options button {
+            margin: 0 10px;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: white;
+        }
+
+        .engraving-options button.active {
+            background-color: #cce5ff;
+            border-color: #007bff;
+        }
+
+        .engraving-content {
+            margin-top: 20px;
+        }
+
+        .engraving-content input[type="file"],
+        .engraving-content input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #add-engraving-btn {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
     </style>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
@@ -166,7 +294,10 @@
             <img src="../images/logo_Black.webp" alt="Logo"> <!-- Replace with your logo image -->
         </div>
         <div class="header-price-button">
-            <div class="price">$108</div>
+            <div style="margin-right: 40px;">
+                <div class="price" style="font-size: 15px; margin-bottom: 5px; margin-top: 5px;">Est. Price</div>
+                <div class="price" style="font-weight: bold;">$108.99</div>
+            </div>
             <button class="checkout-button">Checkout</button>
         </div>
     </div>
@@ -176,8 +307,9 @@
         <!-- Left side: Product display -->
         <div class="product-display">
             <div class="product-display">
-                <model-viewer src="../models/tablecase.glb" alt="3D Model" auto-rotate camera-controls ar
-                    style="width: 100%; height: 100%;">
+                <!-- auto-rotate -->
+                <model-viewer src="../models/tablecase.glb" poster="../images/Geckery_Black.webp" alt="3D Model"  camera-controls shadow-intensity="1" 
+                    style="width: 700px; height: 550px;">
                 </model-viewer>
             </div>
             
@@ -189,45 +321,185 @@
                 Geckery Case
             </h1>
             <span>
-                Basic Options / Placeholder
+                Basic Options / Model / Placeholders
             </span>
+            <br><br><br><br>
+            <h1>Model</h1>
+            <hr>
+            <div class="model-button-container">
+                <button class="btn left-btn" data-index="4" onclick="selectGeckeryButton(4)">
+                    <img src="../images/favicon.ico" alt="Wood Image" class="wood-image" style="max-width: 100px;">
+                    <h4>Standard Geckery Case</h4>
+                    <p class="small-text">Placeholder</p>
+                </button>
+                <button class="btn right-btn" data-index="5" onclick="selectGeckeryButton(5)">
+                    <img src="../images/favicon.ico" alt="Wood Image" class="wood-image" style="max-width: 100px;">
+                    <h4>Special Geckery Case</h4>
+                    <p class="small-text">Placeholder but special like me</p>
+                </button>
+            </div>
+            <br>
             <div style="margin-top: 40;" class="button-style">Test button</div>
             <br><br><br><br>
             <h1>Wood</h1>
             <hr>
             <div style="margin: 40px 0px 0px;" class="button-container">
-                <div class="button-style-wood">
+                <div class="button-style-wood" data-index="0" onclick="selectButton(0)">
                     <p class="small-text">15% Off</p>
                     <img src="../images/favicon.ico" alt="Wood Image" class="wood-image">
                     <p class="big-bold-text">Cherry</p>
                     <p class="small-text">Starting at</p>
                     <p class="medium-bold-text">$69.99</p>
+                    <div class="circle-indicator"></div>
                 </div>
-                <div class="button-style-wood">
+                <div class="button-style-wood" data-index="1" onclick="selectButton(1)">
                     <p class="small-text">10% Off</p>
                     <img src="../images/favicon.ico" alt="Wood Image" class="wood-image">
                     <p class="big-bold-text">Birch</p>
                     <p class="small-text">Starting at</p>
                     <p class="medium-bold-text">$72.99</p>
+                    <div class="circle-indicator"></div>
                 </div>
-                <div class="button-style-wood">
-                    <p class="small-text">5% Offt</p>
+                <div class="button-style-wood" data-index="2" onclick="selectButton(2)">
+                    <p class="small-text">5% Off</p>
                     <img src="../images/favicon.ico" alt="Wood Image" class="wood-image">
-                    <p class="big-bold-text">Oakt</p>
+                    <p class="big-bold-text">Oak</p>
                     <p class="small-text">Starting at</p>
                     <p class="medium-bold-text">$75.99</p>
+                    <div class="circle-indicator"></div>
                 </div>
-                <div class="button-style-wood">
+                <div class="button-style-wood" data-index="3" onclick="selectButton(3)">
                     <p class="small-text">5% Off</p>
                     <img src="../images/favicon.ico" alt="Wood Image" class="wood-image">
                     <p class="big-bold-text">Sakura</p>
                     <p class="small-text">Starting at</p>
-                    <p class="medium-bold-text">89.99</p>
+                    <p class="medium-bold-text">$89.99</p>
+                    <div class="circle-indicator"></div>
                 </div>
             </div>
+
+            <br><br><br><br>
+            <h1>Engraving</h1>
+            <hr>
+            <div id="engraving-area"></div>
+
+            <!-- Button to add engravings -->
+            <button id="add-engraving-btn">Add Custom engravings +</button>
             
+
+
+
+            <br><br><br><br>
+            <h1>Upgrades</h1>
+            <hr>
+
+            <div style="width: 100%;">
+                <br> <br> <br> <br> <br> 
+                <button class="checkout-button" style="margin-left: 50%; translate: -50%;">Checkout</button>
+            </div>
         </div>
     </div>
 
+    <script>
+        let selectedButton = null;
+    
+        function selectButton(index) {
+            // Deselect the previously selected button
+            if (selectedButton !== null) {
+                const prevButton = document.querySelector(`[data-index="${selectedButton}"]`);
+                prevButton.classList.remove('selected');
+                const prevCircle = prevButton.querySelector('.circle-indicator');
+                prevCircle.classList.remove('filled');
+            }
+    
+            // Select the new button
+            const currentButton = document.querySelector(`[data-index="${index}"]`);
+            currentButton.classList.add('selected');
+            const currentCircle = currentButton.querySelector('.circle-indicator');
+            currentCircle.classList.add('filled');
+    
+            selectedButton = index; // Update the selected index
+        }
+
+        let selectedGeckeryButton = null;
+
+        function selectGeckeryButton(index) {
+            // Deselect the previously selected button
+            if (selectedGeckeryButton !== null) {
+                const prevButton = document.querySelector(`[data-index="${selectedGeckeryButton}"]`);
+                prevButton.classList.remove('geckery-selected');
+            }
+
+            // Select the new button
+            const currentButton = document.querySelector(`[data-index="${index}"]`);
+            currentButton.classList.add('geckery-selected');
+
+            selectedGeckeryButton = index; // Update the selected index
+        }
+    </script>
+
+<script>
+    const engravingArea = document.getElementById('engraving-area');
+    const addEngravingBtn = document.getElementById('add-engraving-btn');
+
+    addEngravingBtn.addEventListener('click', function() {
+        // Create a new engraving div
+        const engravingSection = document.createElement('div');
+        engravingSection.classList.add('engraving-section', 'active');
+
+        // Close button for removing the engraving div
+        const closeBtn = document.createElement('button');
+        closeBtn.classList.add('close-btn');
+        closeBtn.textContent = 'X';
+        closeBtn.addEventListener('click', function() {
+            engravingArea.removeChild(engravingSection);
+        });
+
+        // Engraving options
+        const engravingOptions = document.createElement('div');
+        engravingOptions.classList.add('engraving-options');
+        const textButton = document.createElement('button');
+        textButton.textContent = 'Write some text';
+        const imageButton = document.createElement('button');
+        imageButton.textContent = 'Select an image';
+
+        engravingOptions.appendChild(textButton);
+        engravingOptions.appendChild(imageButton);
+
+        // Engraving content area
+        const engravingContent = document.createElement('div');
+        engravingContent.classList.add('engraving-content');
+
+        // Function to toggle between text and image options
+        function selectOption(option) {
+            if (option === 'text') {
+                textButton.classList.add('active');
+                imageButton.classList.remove('active');
+                engravingContent.innerHTML = '<input type="text" placeholder="Enter your custom text here">';
+            } else if (option === 'image') {
+                imageButton.classList.add('active');
+                textButton.classList.remove('active');
+                engravingContent.innerHTML = '<input type="file" accept="image/*">';
+            }
+        }
+
+        // Event listeners for option buttons
+        textButton.addEventListener('click', function() {
+            selectOption('text');
+        });
+
+        imageButton.addEventListener('click', function() {
+            selectOption('image');
+        });
+
+        // Add all elements to the engraving section
+        engravingSection.appendChild(closeBtn);
+        engravingSection.appendChild(engravingOptions);
+        engravingSection.appendChild(engravingContent);
+
+        // Add the new engraving section above the "Add Custom engravings" button
+        engravingArea.appendChild(engravingSection);
+    });
+</script>
 </body>
 </html>
