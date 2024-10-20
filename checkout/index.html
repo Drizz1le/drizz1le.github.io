@@ -98,7 +98,7 @@
         h1 {
             margin: 10px 0px 10px;
             color: black;
-            font-size: 38px;
+            font-size: 30px;
         }
 
         span {
@@ -212,10 +212,10 @@
             background-color: #ddd; /* Optional: Change the background when selected */
         }
 
+        
         .engraving-section {
             position: relative;
             width: 100%;
-            max-width: 400px;
             margin: 20px auto;
             padding: 20px;
             border: 2px solid #ccc;
@@ -237,30 +237,21 @@
             color: white;
             border: none;
             border-radius: 50%;
-            padding: 5px 10px;
+            padding: 5px;
             cursor: pointer;
         }
 
-        .engraving-options {
+        .engraving-dropdown {
             margin: 20px 0;
         }
 
-        .engraving-options button {
-            margin: 0 10px;
+        select {
+            width: 100%;
             padding: 10px;
-            border: 2px solid #ccc;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            cursor: pointer;
-            background-color: white;
-        }
-
-        .engraving-options button.active {
-            background-color: #cce5ff;
-            border-color: #007bff;
-        }
-
-        .engraving-content {
-            margin-top: 20px;
+            background-color: #fff;
         }
 
         .engraving-content input[type="file"],
@@ -442,6 +433,13 @@
     const engravingArea = document.getElementById('engraving-area');
     const addEngravingBtn = document.getElementById('add-engraving-btn');
 
+    // Parts and actions data for dropdowns
+    const parts = {
+        'Front Panel': ['Text', 'SVG', 'Image'],
+        'Side Panel': ['Text'],
+        'Top Panel': ['SVG', 'Image']
+    };
+
     addEngravingBtn.addEventListener('click', function() {
         // Create a new engraving div
         const engravingSection = document.createElement('div');
@@ -455,46 +453,96 @@
             engravingArea.removeChild(engravingSection);
         });
 
-        // Engraving options
-        const engravingOptions = document.createElement('div');
-        engravingOptions.classList.add('engraving-options');
-        const textButton = document.createElement('button');
-        textButton.textContent = 'Write some text';
-        const imageButton = document.createElement('button');
-        imageButton.textContent = 'Select an image';
+        // First dropdown: "Which part to engrave?"
+        const partDropdownDiv = document.createElement('div');
+        partDropdownDiv.classList.add('engraving-dropdown');
+        const partDropdown = document.createElement('select');
+        const defaultPartOption = document.createElement('option');
+        defaultPartOption.textContent = 'Select a part to engrave';
+        defaultPartOption.value = '';
+        partDropdown.appendChild(defaultPartOption);
 
-        engravingOptions.appendChild(textButton);
-        engravingOptions.appendChild(imageButton);
+        for (let part in parts) {
+            const option = document.createElement('option');
+            option.value = part;
+            option.textContent = part;
+            partDropdown.appendChild(option);
+        }
 
-        // Engraving content area
+        partDropdownDiv.appendChild(partDropdown);
+
+        // Second dropdown: "What to do to the part?"
+        const actionDropdownDiv = document.createElement('div');
+        actionDropdownDiv.classList.add('engraving-dropdown');
+        const actionDropdown = document.createElement('select');
+        actionDropdown.disabled = true; // Disabled initially
+        const defaultActionOption = document.createElement('option');
+        defaultActionOption.textContent = 'Select an engraving type';
+        defaultActionOption.value = '';
+        actionDropdown.appendChild(defaultActionOption);
+        actionDropdownDiv.appendChild(actionDropdown);
+
+        // Content area for either text input or file upload
         const engravingContent = document.createElement('div');
         engravingContent.classList.add('engraving-content');
 
-        // Function to toggle between text and image options
-        function selectOption(option) {
-            if (option === 'text') {
-                textButton.classList.add('active');
-                imageButton.classList.remove('active');
-                engravingContent.innerHTML = '<input type="text" placeholder="Enter your custom text here">';
-            } else if (option === 'image') {
-                imageButton.classList.add('active');
-                textButton.classList.remove('active');
-                engravingContent.innerHTML = '<input type="file" accept="image/*">';
+        // Event listener for part selection
+        partDropdown.addEventListener('change', function() {
+            const selectedPart = partDropdown.value;
+            actionDropdown.innerHTML = ''; // Reset action dropdown
+            engravingContent.innerHTML = ''; // Clear content area
+
+            if (selectedPart) {
+                actionDropdown.disabled = false;
+                const availableActions = parts[selectedPart];
+                
+                if (availableActions.length === 1) {
+                    // Automatically select the only available option
+                    const action = availableActions[0];
+                    createActionContent(action);
+                } else {
+                    // Populate action dropdown with available actions
+                    const defaultOption = document.createElement('option');
+                    defaultOption.textContent = 'Select action';
+                    defaultOption.value = '';
+                    actionDropdown.appendChild(defaultOption);
+
+                    availableActions.forEach(action => {
+                        const option = document.createElement('option');
+                        option.value = action;
+                        option.textContent = action;
+                        actionDropdown.appendChild(option);
+                    });
+                }
+            } else {
+                actionDropdown.disabled = true;
+            }
+        });
+
+        // Event listener for action selection
+        actionDropdown.addEventListener('change', function() {
+            const selectedAction = actionDropdown.value;
+            engravingContent.innerHTML = ''; // Clear content area
+            if (selectedAction) {
+                createActionContent(selectedAction);
+            }
+        });
+
+        // Function to create content based on selected action
+        function createActionContent(action) {
+            if (action === 'Text') {
+                engravingContent.innerHTML = '<input type="text" placeholder="Enter your custom text">';
+            } else if (action === 'Image') {
+                engravingContent.innerHTML = '<input type="file" accept="image/png, image/jpeg">';
+            } else if (action === 'SVG') {
+                engravingContent.innerHTML = '<input type="file" accept=".svg">';
             }
         }
 
-        // Event listeners for option buttons
-        textButton.addEventListener('click', function() {
-            selectOption('text');
-        });
-
-        imageButton.addEventListener('click', function() {
-            selectOption('image');
-        });
-
         // Add all elements to the engraving section
         engravingSection.appendChild(closeBtn);
-        engravingSection.appendChild(engravingOptions);
+        engravingSection.appendChild(partDropdownDiv);
+        engravingSection.appendChild(actionDropdownDiv);
         engravingSection.appendChild(engravingContent);
 
         // Add the new engraving section above the "Add Custom engravings" button
